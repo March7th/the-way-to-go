@@ -1,0 +1,44 @@
+A map holds a set of key/value pairs and provides constant-time operations to store, retrieve, or test for an item in the set.
+-- The key may be of any type whose values can compared with ==, strings being the most common example; the value may be of any type at all.
+-- In this example, the keys are strings and the values are ints. The built-in function make creates a new empty map; it has other uses too.
+
+It’s not a problem if the map doesn’t yet contain that key.
+
+The order of map iteration is not specified, but in practice it is random, varying from one run to another.
+
+One of its most useful features is a type called Scanner that reads input and breaks it into lines or words;
+-- it’s often the easiest way to process input that comes naturally in lines.
+
+The program uses a short variable declaration to create a new variable input that refers to a bufio.Scanner.
+-- The scanner reads from the program’s standard input. Each call to input.Scan() reads the next line and removes
+-- the new line character from the end; the result can be retrieved by calling input.Text().
+-- The Scan function returns true if there is a line and false when there is no more input.
+
+conversion character
+
+Printf has over a dozen such conversions, which Go programmers call verbs.
+
+%c    rune (Unicode code point)
+%q    quoted string "abc" or rune 'c'
+%v    any value in a natural format
+%T    type of any value
+
+By convention, formatting functions whose names end in f, such as log.Printf and fmt.Errorf, use the formatting rules of fmt.Printf,
+-- whereas those whose names end in ln follow Println, formatting their arguments as if by %v, followed by a newline.
+
+The function os.Open returns two values.
+
+Notice that the call to countLines precedes its declaration. Functions and other package-level entities may be declared in any order.
+
+A map is a reference to the data structure created by make.
+
+An alternative approach is to read the entire input into memory in one big gulp, split it into lines all at once, then process the lines. 
+
+Second, we moved the counting of the lines back into main, since it is now needed in only one place.
+
+ReadFile returns a byte slice that must be converted into a string so it can be split by strings.Split.
+
+Under the covers, bufio.Scanner, ioutil.ReadFile, and ioutil.WriteFile use the Read and Write methods of *os.File, but it’s rare that
+-- most programmers need to access those lower-level routines directly. The higher-level functions like those from bufio and io/ioutil are easier to use.
+
+Section 4.3, Section 5.4 and Section 3.5.4.
