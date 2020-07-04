@@ -1,0 +1,30 @@
+The variable os.Args is a slice of strings.
+
+A variable can be initialized as part of its declaration. If it is not explicitly initialized, it is implicitly initialized
+-- to the zero value for its type, which is 0 for numeric types and the empty string "" for strings.
+
+This is a quadratic process that could be costly if the number of arguments is large.
+
+These are statements, not expressions as they are in most languages in the C family, so j = i++ is illegal,
+-- and they are postfix only, so --i is not legal either.
+
+for initialization: must be a simple statement--a short variable declaration,
+-- an increment or assignment statement, or a function call.
+
+a traditional "while" loop and a traditional infinite loop
+
+Another form of the for loop iterates over a range of values from a data type like a string or a slice.
+
+s := ""  -- a short variable declaration, it may be used only within a function, not for package-level variables
+var s string  -- default initialization
+var s = ""  -- rarely used except when declaring multiple variables
+var s string = ""  -- explicit about the variable’s type, which is redundant when it is the same as that of the initial value
+                      but necessary in other cases where they are not of the same type
+In practice, you should generally use one of the first two forms, with explicit initialization to say that the initial value
+-- is important and implicit initialization to say that the initial value doesn’t matter.
+
+The old contents of s are no longer in use, so they will be garbage-collected in due course.
+
+Any slice may be printed this way.
+
+Section 1.6 and Section 11.4.
