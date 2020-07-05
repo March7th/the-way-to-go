@@ -1,0 +1,12 @@
+main 中有无 rand.Seed(time.Now().UTC().UnixNano()) 此行的差异, 在于:
+  ./main > ~/Desktop/tmp.gif
+的结果是否每次不同
+
+The variable color.White belongs to the image/color package.
+
+A const declaration (§3.6) gives names to constants, that is, values that are fixed at compile time, such as
+-- the numerical parameters for cycles, frames, and delay. Like var declarations, const declarations may appear at package level
+-- (so the names are visible throughout the package) or within a function (so the names are visible only within that function).
+-- The value of a constant must be a number, string , or boolean.
+
+The expressions []color.Color{...} and gif.GIF{...} are composite literals (§4.2, §4.4.1), a comp ac t not at ion for inst ant i at ing any of G o’s comp osite t yp es f rom a s e quence of element values. Here, the first one is a slice and the second one is a struct.
