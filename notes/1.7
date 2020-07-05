@@ -1,0 +1,21 @@
+Go’s libraries makes it easy to write a web server that responds to client requests like those made by fetch.
+
+The main function connects a handler function to incoming URLs that begin with /, which is all URLs, and starts a server listening for
+-- incoming requests on port 8000. A request is represented as a struct of type http.Request, which contains a number of related fields,
+-- one of which is the URL of the incoming request. When a request arrives, it is given to the handler function, which extracts the path component (/hello)
+-- from the request URL and sends it back as the response, using fmt.Fprintf. Web servers will be explained in detail in Section 7.7.
+
+A handler pattern that ends with a slash matches any URL that has the pattern as a prefix. Behind the scenes, the server runs the handler for
+-- each incoming request in a separate goroutine so that it can serve multiple requests simultaneously. However, if two concurrent requests try to update
+-- count at the same time, it might not be incremented consistently; the program would have a serious bug called a race condition (§9.1).
+-- To avoid this problem, we must ensure that at most one goroutine accesses the variable at a time, which is the purpose of the mu.Lock() and mu.Unlock() calls
+-- that bracket each access of count. We’ll look more closely at concurrency with shared variables in Chapter 9.
+
+Combining the statements is shorter and reduces the scope of the variable err, which is good practice. We’ll define scope in Section 2.7.
+
+That interface, called io.Writer, is discussed in Section 7.1.
+
+Go’s interface mechanism is the topic of Chapter 7.
+
+The second argument to the HandleFunc function call immediately above is a function literal, that is, an anonymous function defined at its point of use.
+-- We will explain it further in Section 5.6.
