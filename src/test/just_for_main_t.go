@@ -17,4 +17,6 @@ func main() {
 	log.Print("**log test2**\n")
 	log.Print("**log test3**\n\n")
 	log.Println("**log test4**")
+
+	log.Fatal("**Fatal test**")
 }
