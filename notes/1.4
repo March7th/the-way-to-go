@@ -1,0 +1,35 @@
+There are several new constructs in this code, including const declarations, struct types, and composite literals.
+-- Unlike most of our examples, this one also involves floating-point computations.
+
+main 中有无 rand.Seed(time.Now().UTC().UnixNano()) 此行的差异, 在于:
+  ./main > ~/Desktop/tmp.gif
+的结果是否每次不同
+
+The variable color.White belongs to the image/color package.
+
+A const declaration (§3.6) gives names to constants, that is, values that are fixed at compile time, such as
+-- the numerical parameters for cycles, frames, and delay. Like var declarations, const declarations may appear at package level
+-- (so the names are visible throughout the package) or within a function (so the names are visible only within that function).
+-- The value of a constant must be a number, string , or boolean.
+
+The expressions []color.Color{...} and gif.GIF{...} are composite literals (§4.2, §4.4.1), a compact notation for instantiating any
+-- of Go’s composite types from a sequence of element values. Here, the first one is a slice and the second one is a struct.
+
+The type gif.GIF is a struct type (§4.4). A struct is a group of values called fields, often of differentt ypes, that are collected together
+-- in a single object that can be treated as a unit. The variable anim is a struct of type gif.GIF. The struct literal createsa struct value
+-- whose LoopCount field is set to nframes; all other fields have the zero value for their type. The individual fields of a struct can be accessed
+-- using dot notation, as in the final two assignments which explicitly update the Delay and Image fields of anim.
+
+*
+The lissajous function has two nested loops. The outer loop runs for 64 iterations, each producing a single frame of the animation.
+-- It creates a new 201&201 image with a palette of two colors, white and black. All pixels are initially set to the palette’s zero value
+-- (the zeroth color in the palette), which we set to white. Each pass through the inner loop generates a new image by setting some pixels to black.
+-- The result is appended, using the built-in append function (§4.2.1), to a list of frames in anim, along with a specified delay of 80ms.
+-- Finally the sequence of frames and delays is encoded into GIF format and written to the output stream out. The type of out is io.Writer,
+-- which lets us write to a wide range of possible destinations, as we’ll show soon.
+
+The inner loop runs the two oscillators. The x oscillator is just the sine function. The y oscillator is also a sinusoid, but its frequency relative
+-- to the x oscillator is a random number between 0 and 3, and its phase relative to the x oscillator is initially zero but increases with each frame
+-- of the animation. The loop runs until the x oscillator has completed five full cycles. At each step, it calls SetColorIndex to color the pixel
+-- corresponding to (x, y) black, which is at position 1 in the palette.
+*
