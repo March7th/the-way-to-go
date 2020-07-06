@@ -9,3 +9,30 @@ switch case:
     -- or a function call—-that can be used to set a value before it is tested.
 
 break and continue:
+The break and continue statements modify the flow of control. A break causes control to resume at the next statement after the innermost for, switch, or
+-- select statement (which we’ll see later), and as we saw in Section 1.3, a continue causes the inner most for loop to start its next iteration.
+-- Statements may be labeled so that break and continue can refer to them, for instance to break out of several nested loops at once or to start
+-- the next iteration of the outermost loop. There is even a goto statement, though it’s intended for machine-generated code, not regular use by programmers.
+
+Named types: A type declaration makes it possible to give a name to an existing type. Since struct types are often long, they are nearly always named.
+
+Pointers: Go provides pointers, that is, values that contain the address of a variable.
+          Go takes a position somewhere in the middle. Pointers are explicitly visible.
+          -- The & operator yields the address of a variable, and the * operator retrieves the variable that the pointer refers to,
+          -- but there is no pointer arithmetic.
+
+Methods and interfaces: A method is a function associated with a named type; Go is unusual in that methods may be attached to almost any named type.
+-- Interfaces are abstract types that let us treat different concrete types in the same way based on what methods they have,
+-- not how they are represented or implemented.
+
+Packages: Go comes with an extensive standard library of useful packages, and the Go community has created and shared many more.
+-- Programming is often more about using existing packages than about writing original code of one’s own.
+https://golang.org/pkg
+https://godoc.org
+$ go doc http.ListenAndServe
+
+Comments: We have already mentioned documentation comments at the beginning of a program or package. It’s also good style to write a comment
+-- before the declaration of each function to specify its behavior. These conventions are important, because they are used by tools like go doc and godoc
+-- to locate and display documentation (§10.7.4).
+Such comments are sometimes used at the beginning of a file for a large block of explanatory text to avoid a // on every line.
+-- Within a comment, // and /* have no special meaning , so comments do not nest.
