@@ -7,6 +7,10 @@ import (
 )
 
 func main() {
+	p := new(int)
+	q := new(int)
+	fmt.Println(p == q)
+
 	anim := gif.GIF{LoopCount: 64}
 	fmt.Printf("type of anim is %T\n", anim)
 
@@ -19,4 +23,5 @@ func main() {
 	log.Println("**log test4**")
 
 	log.Fatal("**Fatal test**")
+	fmt.Println("*********") // 执行然后观察
 }
