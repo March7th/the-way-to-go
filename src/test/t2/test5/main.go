@@ -6,6 +6,5 @@ import (
 )
 
 func main() {
-	fmt.Println(tempconv.CToF(111))
-	fmt.Println()
+	fmt.Println(tempconv.CToF(-273.15))
 }
