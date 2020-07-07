@@ -36,5 +36,30 @@ var 变量名字 类型 = 表达式, "类型"和"= 表达式"可以省略其一.
 
 知晓一个变量的全部别名不是很方便.
 
-#不仅仅是指针会创建别名.
+** 不仅仅是指针会创建别名. **
+
+
+3. new
+
+func newInt() *int {
+    return new(int)
+}
+
+func newInt() *int {
+    var dummy int
+    return &dummy
+}
+
+p := new(int)
+q := new(int)
+fmt.Println(p == q) // "false"
+
+struct{} 和 [0]int, 有可能有相同的地址
+
+§4.4.1
+
+func delta(old, new int) int { return new - old }
+
+
+4. 变量的生命周期
 
