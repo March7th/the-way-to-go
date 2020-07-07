@@ -44,7 +44,6 @@ var 变量名字 类型 = 表达式, "类型"和"= 表达式"可以省略其一.
 func newInt() *int {
     return new(int)
 }
-
 func newInt() *int {
     var dummy int
     return &dummy
@@ -63,3 +62,21 @@ func delta(old, new int) int { return new - old }
 
 4. 变量的生命周期
 
+局部变量的生命周期从创建开始, 到该变量不再被"引用"为止, 然后其存储空间可能会被回收.
+
+注: 右圆括号另起一行时, 上一行末尾可加逗号, 来避免编译错误.
+
+GC 何以知晓一个变量什么时候可被回收.  -- 后面研究
+
+var global *int
+func f() {
+    var x int
+    x = 1
+    global = &x // 堆上分配; 逃逸
+}
+func g() {
+    y := new(int)
+    *y = 1 // 可以选择在栈上分配; 未逃逸
+}
+
+逃逸的变量会影响程序的性能.
