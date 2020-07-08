@@ -4,7 +4,34 @@
 
 type 类型名字 底层类型
 
-类型名字不同, 即使底层类型相同, 也不兼容
+类型名字不同, 即使底层类型相同, 也不兼容.
 
-类型名字首字母大写, 意味着可在外部包使用
+类型名字首字母大写, 意味着可在外部包使用.
 
+(*int)(0)
+
+转型的前提: 底层类型相同.
+
+数值类型之间的转型(丢弃), 字符串与slice之间的转型(拷贝副本).
+
+转型失败只发生在编译阶段.
+
+底层类型也决定了支持的操作(运算符).
+
+var c Celsius
+var f Fahrenheit
+fmt.Println(c == 0)
+fmt.Println(f >= 0)
+fmt.Println(c == f) // compile error
+fmt.Println(c == Celsius(f))
+
+命名的类型的好处: 两点(其中一点是方法集).
+
+func (c Celsius) String() string { return fmt.Sprintf("%g°C", c) }
+c := FToC(212.0)
+fmt.Println(c.String())
+fmt.Printf("%v\n", c)
+fmt.Printf("%s\n", c)
+fmt.Println(c)
+fmt.Printf("%g\n", c)   // does not call String
+fmt.Println(float64(c)) // does not call String
